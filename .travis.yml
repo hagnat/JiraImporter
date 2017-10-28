@@ -2,16 +2,13 @@ language: php
 
 php:
   - 7.1
-  - hhvm
 
 before_install:
-  - travis_retry make install-composer
-  - travis_retry ./bin/composer install --no-interaction --prefer-dist
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-dist
 
 script:
   - make ci
 
 matrix:
-  allow_failures:
-    - php: hhvm
   fast_finish: true
